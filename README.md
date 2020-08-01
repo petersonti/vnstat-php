@@ -6,6 +6,8 @@ Preferably you run it as daemon, but you can theoretically also run it in user
 mode, please refer to the vnStat documentation. After that, just direct a
 virtual host to this directory and you are done.
 
+## Install dependences
+`sudo apt install php php-intl`
 ## Configuring multiple or different interfaces
 
 You can easily change the used interface or add more by copying the
