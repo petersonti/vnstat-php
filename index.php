@@ -152,7 +152,6 @@ $dayFormatter = new IntlDateFormatter(
                 }
 
                 $hours = $database->getHours();
-
                 $receivedData = [
                     'className' => '.received',
                     'data'      => [],
@@ -164,8 +163,8 @@ $dayFormatter = new IntlDateFormatter(
                 ];
 
                 $maxBytes = 0;
-
                 for ($i = $startHour; $i < 24; $i++) {
+                    if (!isset($hours[$i])) continue;
                     $hour = $hours[$i];
                     $receivedData['data'][] = ['x' => $i, 'y' => $hour->getBytesReceived()];
                     $sentData['data'][] = ['x' => $i, 'y' => $hour->getBytesSent()];
@@ -175,6 +174,7 @@ $dayFormatter = new IntlDateFormatter(
 
                 if ($endHour !== 23) {
                     for ($i = 0; $i <= $endHour; $i++) {
+                        if (!isset($hours[$i])) continue;
                         $hour = $hours[$i];
                         $receivedData['data'][] = ['x' => $i, 'y' => $hour->getBytesReceived()];
                         $sentData['data'][] = ['x' => $i, 'y' => $hour->getBytesSent()];
